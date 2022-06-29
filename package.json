@@ -1,5 +1,5 @@
 {
-  "name": "Api2ts",
+	"name": "Api2ts",
 	"displayName": "Api2ts",
 	"description": "Api2ts",
 	"version": "0.0.1",
@@ -10,7 +10,7 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:Api2ts.helloWorld"
+		"onCommand:Api2ts.helloWorld"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
@@ -33,19 +33,24 @@
 		"test": "node ./out/test/runTest.js"
 	},
 	"devDependencies": {
-		"@types/vscode": "^1.68.0",
+		"@antfu/eslint-config": "^0.25.2",
 		"@types/glob": "^7.2.0",
 		"@types/mocha": "^9.1.1",
 		"@types/node": "16.x",
+		"@types/vscode": "^1.68.0",
 		"@typescript-eslint/eslint-plugin": "^5.27.0",
 		"@typescript-eslint/parser": "^5.27.0",
+		"@vscode/test-electron": "^2.1.3",
 		"eslint": "^8.16.0",
 		"glob": "^8.0.3",
 		"mocha": "^10.0.0",
-		"typescript": "^4.7.2",
 		"ts-loader": "^9.3.0",
+		"typescript": "^4.7.2",
 		"webpack": "^5.72.1",
-		"webpack-cli": "^4.9.2",
-		"@vscode/test-electron": "^2.1.3"
+		"webpack-cli": "^4.9.2"
+	},
+	"dependencies": {
+		"axios": "^0.27.2",
+		"json-to-ts": "^1.7.0"
 	}
 }
