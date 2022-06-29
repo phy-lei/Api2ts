@@ -1,17 +1,26 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-import { json } from 'stream/consumers';
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as os from 'os';
 import * as fs from 'fs';
 import request from './request/request';
 import JsonToTS from 'json-to-ts';
-import { getViewColumn } from './utils';
+import { getViewColumn } from './tools/utils';
+import useConfig from './tools/useConfig';
+
+const { initConfig } = useConfig();
+const config = initConfig();
+
+console.log(config, 'initconfig');
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+  const configPath = vscode.workspace
+    .getConfiguration()
+    .get('Api2ts.configFile');
+  console.log(configPath);
   // Use the console to output diagnostic information (console.log) and errors (console.error)
   // This line of code will only be executed once when your extension is activated
   // console.log('Congratulations, your extension "Api2ts" is now active!');
@@ -22,10 +31,14 @@ export function activate(context: vscode.ExtensionContext) {
   const disposable = vscode.commands.registerCommand(
     'Api2ts.helloWorld',
     async () => {
+      const configPath = vscode.workspace
+        .getConfiguration()
+        .get('Api2ts.configFile');
+      console.log(configPath, 'configPath');
       const tmpFilePath = path.join(os.tmpdir(), 'json-to-ts.ts');
       const tmpFileUri = vscode.Uri.file(tmpFilePath);
       const params = {
-        baseURL: 'https://sioc.chinaemt.com',
+        // baseURL: 'https://sioc.chinaemt.com',
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
@@ -33,11 +46,12 @@ export function activate(context: vscode.ExtensionContext) {
         url: '/tool/createTool/indicators/getCount',
         data: { ctParameterCategoryId: 85 },
       };
-      const json = await request(params);
-      console.log(json);
+      const json = await request({
+        ...params,
+        ...config,
+      });
 
       const interfaces = JsonToTS(json.data);
-      console.log(interfaces);
 
       fs.writeFileSync(tmpFilePath, interfaces.join('\n'));
 

@@ -6,11 +6,12 @@ export default async (options: AxiosRequestConfig) => {
     ...options,
     withCredentials: true,
     headers: {
-      token: 'PC_f1aff6a83a4c18851d9d247ee6480de0',
       ...options.headers,
+      token: (options as any).token,
     },
     // timeout:3000
   };
+  console.log(axiosConfig, 'axiosConfig');
 
   const instance: AxiosInstance = axios.create(axiosConfig);
 
