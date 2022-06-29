@@ -9,7 +9,6 @@ export default async (options: AxiosRequestConfig) => {
       ...options.headers,
       token: (options as any).token,
     },
-    // timeout:3000
   };
   console.log(axiosConfig, 'axiosConfig');
 

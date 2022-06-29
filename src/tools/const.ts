@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 
 const { workspaceFolders } = vscode.workspace;
 
-/** Api2ts vscode配置key */
+/** Api2ts vscode配置key  */
 export const API2TS_CONFIG_KEY = 'Api2ts.configFile';
 
 /** 工作区路径 */
