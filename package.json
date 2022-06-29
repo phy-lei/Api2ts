@@ -10,7 +10,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:Api2ts.helloWorld"
+    "*"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -18,6 +18,17 @@
       {
         "command": "Api2ts.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "Api2ts.codeSelection",
+        "title": "Selection",
+        "category": "Cat Coding"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "Api2ts.codeSelection",
+        "key": "alt+Q"
       }
     ],
     "configuration": {
