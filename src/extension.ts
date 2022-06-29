@@ -12,8 +12,6 @@ import useConfig from './tools/useConfig';
 const { initConfig } = useConfig();
 const config = initConfig();
 
-console.log(config, 'initconfig');
-
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -38,7 +36,6 @@ export function activate(context: vscode.ExtensionContext) {
       const tmpFilePath = path.join(os.tmpdir(), 'json-to-ts.ts');
       const tmpFileUri = vscode.Uri.file(tmpFilePath);
       const params = {
-        // baseURL: 'https://sioc.chinaemt.com',
         method: 'post',
         headers: {
           'Content-Type': 'application/json',

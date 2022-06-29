@@ -1,6 +1,6 @@
 import { ViewColumn, window } from 'vscode';
 
-export function getViewColumn(): ViewColumn {
+export function getViewColumn() {
   const activeEditor = window.activeTextEditor;
   if (!activeEditor) {
     return ViewColumn.One;
@@ -13,5 +13,5 @@ export function getViewColumn(): ViewColumn {
       return ViewColumn.Three;
   }
 
-  return activeEditor.viewColumn as any;
+  return activeEditor.viewColumn;
 }
