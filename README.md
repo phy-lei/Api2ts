@@ -36,4 +36,8 @@ const request = {
 };
 ```
 
+## update 配置文件命令
+
+如若 Api2ts.config.json 配置文件进行修改保存，调出命令面板 cmd + shift + p，敲上 api2ts update 命令，已再次获取 Api2ts.config.json 配置文件。
+
 **Enjoy!**

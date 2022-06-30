@@ -1,8 +1,6 @@
 # Change Log
 
-All notable changes to the "Api2ts" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+1.2.0: 新增 api2ts update 命令，可以重新获取 Api2ts.config.json 配置文件。
 
 ## [Unreleased]
 
