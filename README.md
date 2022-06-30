@@ -6,7 +6,7 @@
 
 框选配置项后，使用快捷键 alt+Q :
 
-![useExample](./images/use.gif)
+![useExample]("https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6306a118475f49ab9abab36fa9948e01~tplv-k3u1fbpfcp-watermark.image?")
 
 ## 请求参数配置文件
 
