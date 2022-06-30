@@ -5,7 +5,7 @@ module.exports = {
     ecmaVersion: 6,
     sourceType: 'module',
   },
-  extends: '@antfu',
+  extends: '@antfu/eslint-config',
   plugins: ['@typescript-eslint'],
   rules: {
     rules: {

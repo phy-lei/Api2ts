@@ -7,10 +7,14 @@ export default async (options: AxiosRequestConfig) => {
     withCredentials: true,
     headers: {
       ...options.headers,
+      'Content-Type': options.headers
+        ? options.headers['Content-Type']
+          ? options.headers['Content-Type']
+          : 'application/json'
+        : 'application/json',
       token: (options as any).token,
     },
   };
-  console.log(axiosConfig, 'axiosConfig');
 
   const instance: AxiosInstance = axios.create(axiosConfig);
 
