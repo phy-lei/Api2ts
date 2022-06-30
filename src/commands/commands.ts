@@ -10,7 +10,7 @@ export const transformFromSelection =
   (config: Record<string, string>) => async () => {
     console.log(config, '123123');
 
-    const tmpFilePath = path.join(os.tmpdir(), 'json-to-ts.ts');
+    const tmpFilePath = path.join(os.tmpdir(), 'api-to-ts.ts');
     const tmpFileUri = vscode.Uri.file(tmpFilePath);
 
     const params = await parseJson(getSelectedText());
