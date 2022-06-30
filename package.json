@@ -29,8 +29,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "Api2ts.helloWorld",
-        "title": "Hello World"
+        "command": "Api2ts.api2tsUpdate",
+        "title": "api2ts update"
       },
       {
         "command": "Api2ts.codeSelection",

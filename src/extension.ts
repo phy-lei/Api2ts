@@ -4,18 +4,39 @@ import * as vscode from 'vscode';
 
 import { transformFromSelection } from './commands/commands';
 import useConfig from './tools/useConfig';
-
-const { initConfig } = useConfig();
-const config = initConfig();
+import { API2TS_CONFIG_KEY } from './tools/const';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
+
+type ConfigType = ReturnType<typeof useConfig>['initConfig'];
+
+/**
+ * 设置全局config变量
+ */
+const setGlobalConfig = (
+  context: vscode.ExtensionContext,
+  value: ReturnType<ConfigType>
+) => {
+  context.globalState.update(API2TS_CONFIG_KEY, value);
+};
+
 export function activate(context: vscode.ExtensionContext) {
+  const { initConfig } = useConfig();
+  setGlobalConfig(context, initConfig());
+
   context.subscriptions.push(
     vscode.commands.registerCommand(
       'Api2ts.codeSelection',
-      transformFromSelection(config)
+      transformFromSelection(context)
     )
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand('Api2ts.api2tsUpdate', () => {
+      setGlobalConfig(context, initConfig());
+      vscode.window.showInformationMessage('配置更新完成');
+    })
   );
 }
 

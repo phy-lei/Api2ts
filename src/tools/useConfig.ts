@@ -2,8 +2,14 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as vscode from 'vscode';
 import { API2TS_CONFIG_KEY, WORKSPACE_PATH } from './const';
+interface ApiConfig {
+  token: string;
+  baseURL: string;
+}
 
-export default () => {
+export default (): {
+  initConfig: () => ApiConfig;
+} => {
   /**
    * 获取vscode配置
    */
@@ -24,8 +30,11 @@ export default () => {
   /**
    * 初始配置文件
    */
-  const initConfig = () => {
-    let config: any = {};
+  const initConfig = (): ApiConfig => {
+    let config: ApiConfig = {
+      token: '',
+      baseURL: '',
+    };
     const codeConfig = getCodeConfig(API2TS_CONFIG_KEY);
     if (codeConfig) {
       config = JSON.parse(readApi2tsConfigFile(codeConfig).toString());
