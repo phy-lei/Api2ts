@@ -1,17 +1,30 @@
 {
   "name": "Api2ts",
-  "displayName": "Api2ts",
-  "description": "Api2ts",
+  "displayName": "Api to ts",
+  "description": "http response transform ts",
   "version": "0.0.1",
+  "publisher": "phy-lei",
+  "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.68.0"
   },
+  "keywords": [
+    "types",
+    "util",
+    "typescript",
+    "json"
+  ],
   "categories": [
     "Other"
   ],
   "activationEvents": [
     "*"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phy-lei/Api2ts"
+  },
+  "author": "https://github.com/phy-lei",
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [

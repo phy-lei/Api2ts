@@ -6,7 +6,7 @@
 
 框选配置项后，使用快捷键 alt+v :
 
-\!\[feature X\]\(images/use.gif\)
+![useExample](./images/use.gif)
 
 ## 请求参数配置文件
 
