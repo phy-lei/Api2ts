@@ -4,7 +4,7 @@
 
 ## Features
 
-框选配置项后，使用快捷键 alt+v :
+框选配置项后，使用快捷键 alt+Q :
 
 ![useExample](./images/use.gif)
 
