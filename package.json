@@ -2,7 +2,7 @@
   "name": "Api2ts",
   "displayName": "Api2ts",
   "description": "http response transform ts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "phy-lei",
   "icon": "images/icon.png",
   "engines": {
