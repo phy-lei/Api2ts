@@ -11,6 +11,9 @@ interface ApiConfig {
   baseURL: string;
 }
 
+/**
+ * 文本select后 请求接口 转ts
+ */
 export const transformFromSelection =
   (context: vscode.ExtensionContext) => async () => {
     const config: ApiConfig = context.globalState.get(API2TS_CONFIG_KEY) ?? {

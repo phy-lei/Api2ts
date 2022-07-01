@@ -1,15 +1,13 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as vscode from 'vscode';
-import { API2TS_CONFIG_KEY, WORKSPACE_PATH } from './const';
+import { API2TS_CONFIG_KEY, WORKSPACE_PATH, CONFIG_FILE_NAME } from './const';
 interface ApiConfig {
   token: string;
   baseURL: string;
 }
 
-export default (): {
-  initConfig: () => ApiConfig;
-} => {
+export default () => {
   /**
    * 获取vscode配置
    */
@@ -39,14 +37,13 @@ export default (): {
     if (codeConfig) {
       config = JSON.parse(readApi2tsConfigFile(codeConfig).toString());
     } else {
-      config = JSON.parse(
-        readApi2tsConfigFile('Api2ts.config.json').toString()
-      );
+      config = JSON.parse(readApi2tsConfigFile(CONFIG_FILE_NAME).toString());
     }
     return config;
   };
 
   return {
+    getCodeConfig,
     initConfig,
   };
 };

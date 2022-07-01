@@ -1,10 +1,14 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-
+import * as path from 'path';
 import { transformFromSelection } from './commands/commands';
 import useConfig from './tools/useConfig';
-import { API2TS_CONFIG_KEY } from './tools/const';
+import {
+  API2TS_CONFIG_KEY,
+  WORKSPACE_PATH,
+  CONFIG_FILE_NAME,
+} from './tools/const';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -22,7 +26,14 @@ const setGlobalConfig = (
 };
 
 export function activate(context: vscode.ExtensionContext) {
-  const { initConfig } = useConfig();
+  const { initConfig, getCodeConfig } = useConfig();
+
+  // 读取配置文件路径
+  const workspaceConfigPath = path.join(
+    WORKSPACE_PATH || '',
+    getCodeConfig(API2TS_CONFIG_KEY) || CONFIG_FILE_NAME
+  );
+
   setGlobalConfig(context, initConfig());
 
   context.subscriptions.push(
@@ -35,7 +46,16 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerCommand('Api2ts.api2tsUpdate', () => {
       setGlobalConfig(context, initConfig());
-      vscode.window.showInformationMessage('配置更新完成');
+      vscode.window.showInformationMessage('api2ts配置更新');
+    })
+  );
+
+  /** 监听配置文件保存 更新配置 */
+  context.subscriptions.push(
+    vscode.workspace.onDidSaveTextDocument(({ languageId, fileName }) => {
+      // 过滤非 Json 语言文件 且非配置文件
+      if (languageId !== 'json' && fileName !== workspaceConfigPath) return;
+      vscode.commands.executeCommand('Api2ts.api2tsUpdate');
     })
   );
 }
