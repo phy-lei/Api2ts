@@ -1,13 +1,13 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
 import * as path from 'path';
+import * as vscode from 'vscode';
 import { transformFromSelection } from './commands/commands';
 import useConfig from './tools/useConfig';
 import {
   API2TS_CONFIG_KEY,
-  WORKSPACE_PATH,
   CONFIG_FILE_NAME,
+  WORKSPACE_PATH,
 } from './tools/const';
 
 // this method is called when your extension is activated

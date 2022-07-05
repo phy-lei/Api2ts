@@ -1,9 +1,9 @@
-import * as vscode from 'vscode';
 import * as path from 'path';
 import * as os from 'os';
 import * as fs from 'fs';
+import * as vscode from 'vscode';
 import JsonToTS from 'json-to-ts';
-import { getViewColumn, getSelectedText, parseJson } from '../tools/utils';
+import { getSelectedText, getViewColumn, parseJson } from '../tools/utils';
 import request from '../request/request';
 import { API2TS_CONFIG_KEY } from '../tools/const';
 interface ApiConfig {

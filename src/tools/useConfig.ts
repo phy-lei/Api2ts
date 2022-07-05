@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as vscode from 'vscode';
-import { API2TS_CONFIG_KEY, WORKSPACE_PATH, CONFIG_FILE_NAME } from './const';
+import { API2TS_CONFIG_KEY, CONFIG_FILE_NAME, WORKSPACE_PATH } from './const';
 interface ApiConfig {
   token: string;
   baseURL: string;
@@ -19,9 +19,9 @@ export default () => {
    * 读取工作区配置文件
    */
   const readApi2tsConfigFile = (configFilePath: string) => {
-    if (WORKSPACE_PATH) {
+    if (WORKSPACE_PATH)
       return fs.readFileSync(path.join(WORKSPACE_PATH, configFilePath));
-    }
+
     return '';
   };
 
@@ -34,11 +34,10 @@ export default () => {
       baseURL: '',
     };
     const codeConfig = getCodeConfig(API2TS_CONFIG_KEY);
-    if (codeConfig) {
+    if (codeConfig)
       config = JSON.parse(readApi2tsConfigFile(codeConfig).toString());
-    } else {
-      config = JSON.parse(readApi2tsConfigFile(CONFIG_FILE_NAME).toString());
-    }
+    else config = JSON.parse(readApi2tsConfigFile(CONFIG_FILE_NAME).toString());
+
     return config;
   };
 

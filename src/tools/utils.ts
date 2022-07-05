@@ -2,9 +2,7 @@ import { ViewColumn, window } from 'vscode';
 
 export function getViewColumn() {
   const activeEditor = window.activeTextEditor;
-  if (!activeEditor) {
-    return ViewColumn.One;
-  }
+  if (!activeEditor) return ViewColumn.One;
 
   switch (activeEditor.viewColumn) {
     case ViewColumn.One:
