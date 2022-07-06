@@ -1,5 +1,5 @@
 {
-  "name": "Api2ts",
+  "name": "api2ts",
   "displayName": "Api2ts",
   "description": "http response transform ts",
   "version": "1.3.1",
@@ -76,8 +76,6 @@
     "@typescript-eslint/parser": "^5.27.0",
     "@vscode/test-electron": "^2.1.3",
     "eslint": "^8.16.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.2.1",
     "glob": "^8.0.3",
     "mocha": "^10.0.0",
     "ts-loader": "^9.3.0",

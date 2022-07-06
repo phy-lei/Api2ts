@@ -3,8 +3,8 @@ import * as path from 'path';
 import * as vscode from 'vscode';
 import { API2TS_CONFIG_KEY, CONFIG_FILE_NAME, WORKSPACE_PATH } from './const';
 interface ApiConfig {
-  token: string;
-  baseURL: string;
+  token: string
+  baseURL: string
 }
 
 export default () => {

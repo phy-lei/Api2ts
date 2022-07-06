@@ -2,7 +2,8 @@ import { ViewColumn, window } from 'vscode';
 
 export function getViewColumn() {
   const activeEditor = window.activeTextEditor;
-  if (!activeEditor) return ViewColumn.One;
+  if (!activeEditor)
+    return ViewColumn.One;
 
   switch (activeEditor.viewColumn) {
     case ViewColumn.One:
@@ -28,11 +29,13 @@ export function parseJson(json: string): Promise<object> {
 
   try {
     return Promise.resolve(JSON.parse(json));
-  } catch (ignored) {}
+  }
+  catch (ignored) {}
 
   try {
     return Promise.resolve(tryEval(json));
-  } catch (error) {
+  }
+  catch (error) {
     return Promise.reject(new Error('Selected string is not a valid JSON'));
   }
 }

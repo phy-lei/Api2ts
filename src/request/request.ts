@@ -12,7 +12,7 @@ export default async (options: AxiosRequestConfig) => {
           ? options.headers['Content-Type']
           : 'application/json'
         : 'application/json',
-      token: (options as any).token,
+      'token': (options as any).token,
     },
   };
 

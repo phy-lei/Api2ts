@@ -12,10 +12,10 @@
 
 在根目录下创建 Api2ts.config.json 文件，配置项如下：
 
-```json
+```txt
 {
-  "baseURL": "https://${host}.com", //后端请求接口域 必填
-  "token": "xxxxxxxxx" // 请求headers携带的token 必填
+  "baseURL": "https://${host}.com", // 后端请求接口域 必填
+  "token": "xxxxxxxxx", // 请求headers携带的token 必填
 }
 ```
 
