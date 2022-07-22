@@ -54,12 +54,13 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.workspace.onDidSaveTextDocument(({ languageId, fileName }) => {
       // 过滤非 Json 语言文件 且非配置文件
-      if (languageId !== 'json' && fileName !== workspaceConfigPath)
-        return;
+      if (languageId !== 'json' || fileName !== workspaceConfigPath)
+        return
+
       vscode.commands.executeCommand('Api2ts.api2tsUpdate');
     })
   );
 }
 
 // this method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() { }
