@@ -2,10 +2,11 @@ import axios from 'axios';
 import type { AxiosInstance, AxiosRequestConfig } from 'axios';
 export default async (options: AxiosRequestConfig) => {
   // 创建一个axios实例
-  const axiosConfig = {
+  const axiosConfig: any = {
     ...options,
     withCredentials: true,
     headers: {
+      ...options,
       ...options.headers,
       'Content-Type': options.headers
         ? options.headers['Content-Type']

@@ -34,6 +34,8 @@ export function activate(context: vscode.ExtensionContext) {
     getCodeConfig(API2TS_CONFIG_KEY) || CONFIG_FILE_NAME
   );
 
+  console.log('%c [ workspaceConfigPath ]', 'font-size:13px; background:pink; color:#bf2c9f;', workspaceConfigPath);
+
   setGlobalConfig(context, initConfig());
 
   context.subscriptions.push(

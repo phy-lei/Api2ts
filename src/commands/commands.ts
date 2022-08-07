@@ -20,6 +20,7 @@ export const transformFromSelection
       token: '',
       baseURL: '',
     };
+    console.log('%c [ xxx ]', 'font-size:13px; background:pink; color:#bf2c9f;', config);
 
     const tmpFilePath = path.join(os.tmpdir(), 'api-to-ts.ts');
     const tmpFileUri = vscode.Uri.file(tmpFilePath);

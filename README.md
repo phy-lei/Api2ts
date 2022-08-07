@@ -10,12 +10,14 @@
 
 ## 请求参数配置文件
 
-在根目录下创建 Api2ts.config.json 文件，配置项如下：
+在工作区根目录下创建 Api2ts.config.json 文件，配置项如下：
 
 ```txt
 {
   "baseURL": "https://${host}.com", // 后端请求接口域 必填
   "token": "xxxxxxxxx", // 请求headers携带的token 必填
+  // 更多的参数也可以继续写，也会写入请求头中 例如satoken
+  "satoken": "xxxxxxx",
 }
 ```
 
@@ -25,15 +27,15 @@
 const request = {
   method: 'post', // 请求方式 必填
   headers: {
-    'Content-Type': 'application/json', // headers头配置 默认是'application/json' 非必填
+    'Content-Type': 'application/json' // headers头配置 默认是'application/json' 非必填
   },
   url: '/aaa/bbb', // 请求路径 必填
   data: {
     page: 1,
     limit: 20,
-    ctParameterCategoryId: 88,
-  }, // 请求参数 非必填
-};
+    ctParameterCategoryId: 88
+  } // 请求参数 非必填
+}
 ```
 
 ## update 配置文件命令
