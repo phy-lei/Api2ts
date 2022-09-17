@@ -36,12 +36,21 @@
         "command": "Api2ts.codeSelection",
         "title": "Selection",
         "category": "Cat Coding"
+      },
+      {
+        "command": "Api2ts.codeResponse",
+        "title": "CodeResponse",
+        "category": "Cat Coding"
       }
     ],
     "keybindings": [
       {
         "command": "Api2ts.codeSelection",
         "key": "alt+Q"
+      },
+      {
+        "command": "Api2ts.codeResponse",
+        "key": "alt+W"
       }
     ],
     "configuration": {
@@ -85,6 +94,7 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "json-format": "^1.0.1",
     "json-to-ts": "^1.7.0"
   }
 }

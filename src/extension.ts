@@ -2,7 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as path from 'path';
 import * as vscode from 'vscode';
-import { transformFromSelection } from './commands/commands';
+import { transformFromSelection, transformResponse } from './commands/commands';
 import useConfig from './tools/useConfig';
 import {
   API2TS_CONFIG_KEY,
@@ -42,6 +42,13 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.commands.registerCommand(
       'Api2ts.codeSelection',
       transformFromSelection(context)
+    )
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand(
+      'Api2ts.codeResponse',
+      transformResponse(context)
     )
   );
 
