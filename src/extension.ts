@@ -3,57 +3,57 @@
 import * as path from 'path';
 import * as vscode from 'vscode';
 import { transformFromSelection, transformResponse } from './commands/commands';
-import useConfig from './tools/useConfig';
+import { initConfig, getCodeConfig as getCodeConfigPath, ApiConfig } from './tools/config';
 import {
   API2TS_CONFIG_KEY,
   CONFIG_FILE_NAME,
   WORKSPACE_PATH,
+  CODE_SELECTION_COMMAND,
+  CODE_RESPONSE_COMMAND,
+  UPDATE_CONFIG_COMMAND
 } from './tools/const';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 
-type ConfigType = ReturnType<typeof useConfig>['initConfig'];
 
 /**
  * 设置全局config变量
  */
 const setGlobalConfig = (
   context: vscode.ExtensionContext,
-  value: ReturnType<ConfigType>
+  value: ApiConfig
 ) => {
   context.globalState.update(API2TS_CONFIG_KEY, value);
 };
 
 export function activate(context: vscode.ExtensionContext) {
-  const { initConfig, getCodeConfig } = useConfig();
 
   // 读取配置文件路径
   const workspaceConfigPath = path.join(
     WORKSPACE_PATH || '',
-    getCodeConfig(API2TS_CONFIG_KEY) || CONFIG_FILE_NAME
+    getCodeConfigPath(API2TS_CONFIG_KEY) || CONFIG_FILE_NAME
   );
 
-  console.log('%c [ workspaceConfigPath ]', 'font-size:13px; background:pink; color:#bf2c9f;', workspaceConfigPath);
 
   setGlobalConfig(context, initConfig());
 
   context.subscriptions.push(
     vscode.commands.registerCommand(
-      'Api2ts.codeSelection',
+      CODE_SELECTION_COMMAND,
       transformFromSelection(context)
     )
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand(
-      'Api2ts.codeResponse',
+      CODE_RESPONSE_COMMAND,
       transformResponse(context)
     )
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand('Api2ts.api2tsUpdate', () => {
+    vscode.commands.registerCommand(UPDATE_CONFIG_COMMAND, () => {
       setGlobalConfig(context, initConfig());
       vscode.window.showInformationMessage('api2ts配置更新');
     })
@@ -66,7 +66,7 @@ export function activate(context: vscode.ExtensionContext) {
       if (languageId !== 'json' || fileName !== workspaceConfigPath)
         return
 
-      vscode.commands.executeCommand('Api2ts.api2tsUpdate');
+      vscode.commands.executeCommand(UPDATE_CONFIG_COMMAND);
     })
   );
 }

@@ -12,3 +12,12 @@ export const WORKSPACE_PATH = workspaceFolders
 
 /** 配置文件名 */
 export const CONFIG_FILE_NAME = 'Api2ts.config.json';
+
+/** 代码框选出ts命令key */
+export const CODE_SELECTION_COMMAND = 'Api2ts.codeSelection'
+
+/** 代码框选出http响应数据命令key */
+export const CODE_RESPONSE_COMMAND = 'Api2ts.codeResponse'
+
+/** 配置文件更新命令key */
+export const UPDATE_CONFIG_COMMAND = 'Api2ts.api2tsUpdate'
